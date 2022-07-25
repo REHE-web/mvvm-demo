@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>mvvm</title>
+    <script src="mvvm.js"></script>
+<!--    <script src="observer.js"></script>-->
+<!--    <script src="compile.js"></script>-->
+<!--    <script src="watcher.js"></script>-->
+</head>
+<body>
+    <h1>简单实现MVVM</h1>
+    <div id="app">
+        <div>
+            <h2>1. 单向绑定</h2>
+            <p v-text="a.a"></p>
+        </div>
+        <div>
+            <h2>2. 双向绑定</h2>
+            <input type="text" v-model="msg">
+            <p>
+                {{msg}}
+            </p>
+        </div>
+        <div>
+            <h2>3. 事件绑定</h2>
+            <button v-on:click="addOne">加一</button>
+            <p>{{counter}}</p>
+        </div>
+    </div>
+</body>
+<script>
+    let vm = new Mvvm({
+        el:"#app",
+        data:{
+            msg:"mvvm",
+            a:{
+                a:"b"
+            },
+            counter: 0
+        },
+        methods:{
+            addOne (){
+                this.counter++;
+            }
+        }
+    })
+</script>
+</html>
